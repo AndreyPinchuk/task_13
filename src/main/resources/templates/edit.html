@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+<form action="/note/edit" method="POST">
+
+    <div class="container">
+        <div th:each="el : ${note}" class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" th:value="${el.title}" class="form-control" id="exampleFormControlInput1"  name="exampleFormControlTitle"  placeholder="title">
+        </div>
+
+        <div th:each="el : ${note}" class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+            <textarea th:text="${el.content}" class="form-control"  id="exampleFormControlTextarea1" name="exampleFormControlContent" rows="3" placeholder="content"></textarea>
+        </div>
+
+        <div th:each="el : ${note}" class="card-footer">
+
+            <button th:value="${el.id}" name="id" type="submit" class="btn btn-primary">Save</button>
+
+        </div>
+
+    </div>
+
+</form>
+</body>
+</html>

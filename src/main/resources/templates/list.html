@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <h1 style="text-align: center">Notes</h1>
+
+    <table class="pure-table pure-table-horizontal" style="text-align: center; margin-left: auto; margin-right: auto;">
+        <thead>
+        <tr>
+            <th></th>
+            <th style="text-align: center; width: 150px;">Title</th>
+            <th style="text-align: center;">Content</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <div th:each="el : ${note}" >
+
+            <tr>
+                <td>
+                <a th:href="'/note/edit?id='+${el.id}" class="btn btn-outline-primary">Edit</a>
+
+                </td>
+                <td th:text="${el.title}"></td>
+                <td th:text="${el.content}"></td>
+                <td>
+                    <form action="/note/delete" method="POST">
+                        <div class="card-footer">
+
+                            <button th:value="${el.id}" name="id" type="submit" class="btn btn-primary">Delete</button>
+
+                        </div>
+                    </form>
+                </td>
+
+            </tr>
+
+        </div>
+
+        </tbody>
+    </table>
+
+</body>
+</html>
